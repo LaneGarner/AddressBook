@@ -27,14 +27,14 @@ const getMultipleUsers = () => {
     fetch('https://randomuser.me/api/?results=10')
     .then(res => res.json())
     .then(people => {
-        multiUserArray =  people.results
+        multiUserArray = people.results
         multiUserArray.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
         console.log('sorted array: ', multiUserArray)
         multiUserArray.forEach(person => {
             console.log('address: ', person.location)
             let contactItem = document.createElement('li')
             let userImg = document.createElement('img')
-                userImg.src = person.picture.thumbnail
+                userImg.src = person.picture.large
                 userImg.alt = `${person.name.first} ${person.name.last} thumbnail`
             
             let showInfoBtn = document.createElement('button')
