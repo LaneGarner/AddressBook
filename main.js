@@ -34,6 +34,7 @@ function allUsers() {
     .then (response => response.json())
     .then (data => {
         multipleArray = data.results
+        multipleArray.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
         multipleArray.map(person => {
         console.log(person);
         let createAllLi = document.createElement("li");
@@ -44,11 +45,24 @@ function allUsers() {
         let button = document.createElement('button');
         button.addEventListener("click",(e) => {
             let textBox = document.createElement('p');
+            textBox.id = `${person.name.first}-id`
             // let pText = document.createTextNode("Cell: " + person.cell + " " + "Age: " + person.dob.age);
             textBox.innerHTML=(`<strong>Phone:</strong> ${person.phone}<br><strong>Cell:</strong> ${person.cell}<br><strong>Age:</strong> ${person.dob.age}<br><strong>Email:</strong> ${person.email}<br><strong>Address:</strong> ${person.location.street.number} ${person.location.street.name}<br>${person.location.city}, ${person.location.state}, ${person.location.country} ${person.location.postcode}`);
             // textBox.appendChild(pText);
             createAllLi.appendChild(textBox);
         })
+        let buttonText = document.createTextNode("More Info");
+        button.appendChild(buttonText);
+
+        let button2 = document.createElement('button');
+        button2.addEventListener("click",(e) => {
+        let infoDiv = document.querySelector(`#${person.name.first}-id`)
+        console.log (infoDiv) 
+        infoDiv.remove();
+        })
+
+        let button2Text = document.createTextNode("Hide Info");
+        button2.appendChild(button2Text);
 
         
 
@@ -56,10 +70,8 @@ function allUsers() {
         createAllLi.appendChild(allImage);
         createAllLi.appendChild(document.createTextNode(person.name.first + " " + person.name.last));
         createAllLi.appendChild(button);
+        createAllLi.appendChild(button2);
 
-        let buttonText = document.createTextNode("More Info");
-  
-        button.appendChild(buttonText);
         allContactsList.append(createAllLi);
     })
       console.log(multipleArray);
