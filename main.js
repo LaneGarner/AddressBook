@@ -6,7 +6,7 @@ let checkFetch = (response) => {
 }
 
 const getPosts = () => {
-    fetch('http://jsonplaceholder.typicode.com/posts')
+    fetch('https://randomuser.me/api/')
     .then(checkFetch)
     .then(res => {
         return res.json()
@@ -14,3 +14,4 @@ const getPosts = () => {
     .then(posts => arrayOfPosts = posts)
     .catch(err => console.log(`Error,  ${err}`))
 }
+
