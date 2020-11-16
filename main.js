@@ -50,15 +50,20 @@ function allUsers() {
             textBox.innerHTML=(`<strong>Phone:</strong> ${person.phone}<br><strong>Cell:</strong> ${person.cell}<br><strong>Age:</strong> ${person.dob.age}<br><strong>Email:</strong> ${person.email}<br><strong>Address:</strong> ${person.location.street.number} ${person.location.street.name}<br>${person.location.city}, ${person.location.state}, ${person.location.country} ${person.location.postcode}`);
             // textBox.appendChild(pText);
             createAllLi.appendChild(textBox);
+            button.style.display = 'none'
+            button2.style.display = 'block'
         })
         let buttonText = document.createTextNode("More Info");
         button.appendChild(buttonText);
 
         let button2 = document.createElement('button');
+        button2.style.display = 'none'
         button2.addEventListener("click",(e) => {
         let infoDiv = document.querySelector(`#${person.name.first}-id`)
         console.log (infoDiv) 
         infoDiv.remove();
+        button.style.display = 'block'
+        button2.style.display = 'none'
         })
 
         let button2Text = document.createTextNode("Hide Info");
