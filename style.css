@@ -48,3 +48,9 @@ button {
     border-radius: 30px;
     cursor: pointer;
 }
+
+@media (max-width: 700px) {
+    li {
+        width: 80%;
+    }
+}
