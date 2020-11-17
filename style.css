@@ -31,6 +31,10 @@ li p {
     font-size: 20px;
 }
 
+ul {
+    padding-left: 0;
+}
+
 img {
     border-radius: 50%;
     margin: 20px auto;
